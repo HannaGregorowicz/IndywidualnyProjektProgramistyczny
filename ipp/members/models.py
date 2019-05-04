@@ -6,3 +6,5 @@ class Member(models.Model):
     photo = models.FileField()
     more = models.TextField()
 
+    def __str__(self):
+        return self.name

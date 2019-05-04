@@ -5,3 +5,6 @@ class Project(models.Model):
     description = models.TextField()
     photo = models.FileField(null=True)
     date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

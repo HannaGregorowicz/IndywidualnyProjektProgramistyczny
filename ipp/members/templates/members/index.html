@@ -1,0 +1,10 @@
+<h2>Członkowie:</h2>
+{% if all_members %}
+    <ul>
+        {% for member in all_members %}
+        <li><a href="/members/{{ member.id }}">{{ member.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nie ma członków :(</h3>
+{% endif %}
