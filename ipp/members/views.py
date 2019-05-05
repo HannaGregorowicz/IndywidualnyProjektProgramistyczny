@@ -1,5 +1,4 @@
-from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Member
 
 def index(request):
@@ -10,8 +9,5 @@ def index(request):
     return render(request, 'members/index.html', context)
 
 def detail(request, member_id):
-    try:
-        member = Member.objects.get(pk=member_id)
-    except Member.DoesNotExist:
-        raise Http404("Nie ma takiego członka :(")
+    member = get_object_or_404(Member, pk=member_id)
     return render(request, 'members/detail.html', {'member': member})

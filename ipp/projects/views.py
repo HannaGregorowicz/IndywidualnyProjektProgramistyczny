@@ -1,5 +1,4 @@
-from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Project
 
 def index(request):
@@ -10,8 +9,6 @@ def index(request):
     return render(request, 'projects/index.html', context)
 
 def detail(request, project_id):
-    try:
-        project = Project.objects.get(pk=project_id)
-    except Project.DoesNotExist:
-        raise Http404("Nie ma takiego projektu :(")
+    # project = Project.objects.get(pk=project_id)
+    project = get_object_or_404(Project, pk=project_id)
     return render(request, 'projects/detail.html', {'project': project})
