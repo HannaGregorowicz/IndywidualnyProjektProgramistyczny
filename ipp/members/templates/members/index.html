@@ -1,4 +1,8 @@
+{% extends 'members/base.html' %}
 {% load staticfiles %}
+{% block title %}Członkowie koła{% endblock %}
+{% block body %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'members/style.css' %}">
 
 <h2>Członkowie:</h2>
@@ -11,3 +15,5 @@
 {% else %}
     <h3>Nie ma członków :(</h3>
 {% endif %}
+
+{% endblock %}
