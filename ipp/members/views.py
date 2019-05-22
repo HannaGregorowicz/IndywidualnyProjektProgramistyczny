@@ -1,13 +1,18 @@
-from django.shortcuts import render, get_object_or_404
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Member
 
-def index(request):
-    all_members = Member.objects.all()  # takes all projects from database
-    context = {
-        'all_members': all_members,
-    }
-    return render(request, 'members/index.html', context)
+class IndexView(generic.ListView):
+    template_name = 'members/index.html'
+    context_object_name = 'all_members'
 
-def detail(request, member_id):
-    member = get_object_or_404(Member, pk=member_id)
-    return render(request, 'members/detail.html', {'member': member})
+    def get_queryset(self):
+        return Member.objects.all()
+
+class DetailView(generic.DetailView):
+    model = Member
+    template_name = 'members/detail.html'
+
+class MemberCreate(CreateView):
+    model = Member
+    fields = ['name', 'technologies', 'photo', 'more']
