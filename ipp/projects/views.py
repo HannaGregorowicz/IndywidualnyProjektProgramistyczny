@@ -1,5 +1,6 @@
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
 from .models import Project
 
 class IndexView(generic.ListView):
@@ -16,6 +17,15 @@ class DetailView(generic.DetailView):
 class ProjectCreate(CreateView):
     model = Project
     fields = ['title', 'description', 'photo']
+
+class ProjectUpdate(UpdateView):
+    model = Project
+    fields = ['title', 'description', 'photo']
+
+class ProjectDelete(DeleteView):
+    model = Project
+    success_url = reverse_lazy('projects:index')
+
 
 
 """

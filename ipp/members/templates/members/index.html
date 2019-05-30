@@ -9,7 +9,15 @@
 {% if all_members %}
     <ul>
         {% for member in all_members %}
-        <li><a href="{% url 'members:detail' member.id %}">{{ member.name }}</a></li>
+        <li><a href="{% url 'members:detail' member.id %}">{{ member.name }}</a>
+            <form action="{% url 'members:member-delete' member.id %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <input type="hidden" name="member_id" value="{{ member.id }}"/>
+                   <button type="submit" class="btn btn-default btn-small">
+                       <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+            </form>
+        </li>
         {% endfor %}
     </ul>
 {% else %}

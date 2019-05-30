@@ -8,5 +8,5 @@
 <h1>{{ project.title }}</h1>
 <h4>{{ project.date }}</h4>
 <h2>{{ project.description }}</h2>
-
+<a href="{% url 'projects:project-update' project.id %}">Edytuj</a>
 {% endblock %}

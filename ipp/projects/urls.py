@@ -12,4 +12,10 @@ urlpatterns = [
 
     #/projects/add/
     url(r'add/$', views.ProjectCreate.as_view(), name='project-add'),
+
+    #/projects/3/update
+    url(r'^(?P<pk>[0-9]+)/update/$', views.ProjectUpdate.as_view(), name='project-update'),
+
+    #/projects/3/delete
+    url(r'^(?P<pk>[0-9]+)/delete/$', views.ProjectDelete.as_view(), name='project-delete'),
 ]
