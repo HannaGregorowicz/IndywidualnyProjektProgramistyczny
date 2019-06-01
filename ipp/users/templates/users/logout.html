@@ -1,0 +1,14 @@
+{% extends 'members/base.html' %}
+{% load staticfiles %}
+{% block title %}Rejestracja{% endblock %}
+{% block body %}
+
+    <h2>Wylogowano.</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}" class="ml-2">Zaloguj się</a> ponownie!
+        </small>
+    </div>
+
+
+{% endblock %}

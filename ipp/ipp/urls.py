@@ -12,8 +12,8 @@ urlpatterns = [
     url(r'^members/', include('members.urls')),
     url(r'^projects/', include('projects.urls')),
     url(r'^register/', include('users.urls')),
-    url(r'^login/', login, name='login'),
-    url(r'^logout/', logout, name='logout'),
+    url(r'^login/', login, {"template_name": "users/login.html"}, name='login'),
+    url(r'^logout/', logout, {"template_name": "users/logout.html"}, name='logout'),
 
 ]
 

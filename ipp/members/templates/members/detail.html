@@ -8,6 +8,9 @@
 <h1>{{ member.name }}</h1>
 <h2>Technologie: {{ member.technologies }}</h2>
 <h3>{{ member.more }}</h3>
+{% if user.is_authenticated %}
 <a href="{% url 'members:member-update' member.id %}">Edytuj</a>
+{% else %}
+{% endif %}
 
 {% endblock %}

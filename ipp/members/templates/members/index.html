@@ -10,6 +10,7 @@
     <ul>
         {% for member in all_members %}
         <li><a href="{% url 'members:detail' member.id %}">{{ member.name }}</a>
+            {% if user.is_authenticated %}
             <form action="{% url 'members:member-delete' member.id %}" method="post" style="display: inline;">
               {% csrf_token %}
               <input type="hidden" name="member_id" value="{{ member.id }}"/>
@@ -17,6 +18,8 @@
                        <span class="glyphicon glyphicon-trash"></span>
                     </button>
             </form>
+            {% else %}
+            {% endif %}
         </li>
         {% endfor %}
     </ul>

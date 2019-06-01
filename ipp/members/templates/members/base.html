@@ -48,7 +48,7 @@
                   </a>
                 </li>
             </ul>
-
+            {% if user.is_authenticated %}
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="{% url 'projects:project-add' %}">
@@ -61,11 +61,13 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="#">
+                    <a href="{% url 'logout' %}">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Wyloguj
                     </a>
                 </li>
             </ul>
+            {% else %}
+            {% endif %}
         </div>
 
     </div>
