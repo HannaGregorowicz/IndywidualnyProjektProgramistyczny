@@ -16,11 +16,11 @@ class DetailView(generic.DetailView):
 
 class ProjectCreate(CreateView):
     model = Project
-    fields = ['title', 'description', 'photo']
+    fields = ['title', 'description', 'photo', 'content']
 
 class ProjectUpdate(UpdateView):
     model = Project
-    fields = ['title', 'description', 'photo']
+    fields = ['title', 'description', 'photo', 'content']
 
 class ProjectDelete(DeleteView):
     model = Project

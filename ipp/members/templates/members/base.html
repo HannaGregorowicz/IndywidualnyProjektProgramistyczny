@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+    <div class="container">
         <!-- Header -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
@@ -27,22 +27,22 @@
         <!-- Items -->
         <div class="collapse navbar-collapse" id="topNavBar">
             <ul class="nav navbar-nav">
-                <li class="">
+                <li class="{% block about %}{% endblock %}">
                       <a href="{% url 'about:index' %}">
                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp; O nas
                   </a>
                 </li>
-                <li class="">
+                <li class="{% block projects %}{% endblock %}">
                       <a href="{% url 'projects:index' %}">
                         <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp; Nasze projekty
                   </a>
                 </li>
-                <li class="">
+                <li class="{% block members %}{% endblock %}">
                       <a href="{% url 'members:index' %}">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; Członkowie
                   </a>
                 </li>
-                <li class="">
+                <li class="{% block contact %}{% endblock %}">
                       <a href="{% url 'contact:index' %}">
                         <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp; Kontakt
                   </a>
@@ -50,12 +50,12 @@
             </ul>
             {% if user.is_authenticated %}
             <ul class="nav navbar-nav navbar-right">
-                <li class="">
+                <li class="{% block add-project %}{% endblock %}">
                     <a href="{% url 'projects:project-add' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Dodaj projekt
                     </a>
                 </li>
-                <li class="">
+                <li class="{% block add-member %}{% endblock %}">
                     <a href="{% url 'members:member-add' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Dodaj członka koła
                     </a>
@@ -79,7 +79,27 @@
             </div>
         {% endfor %}
     {% endif %}
-    {% block body %}
-    {% endblock %}
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% block body %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Our Sidebar</h3>
+            <p class='text-muted'>You can put any information here you'd like.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light">Calendars</li>
+                <li class="list-group-item list-group-item-light">etc</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
 </body>
 </html>

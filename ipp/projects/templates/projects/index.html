@@ -1,25 +1,43 @@
 {% extends 'members/base.html' %}
 {% block title %}Nasze projekty{% endblock %}
+{% block projects %}active{% endblock %}
 {% block body %}
 
-<h2>Projekty:</h2>
+
 {% if all_projects %}
-    <ul>
-        {% for project in all_projects %}
-        <li><a href="{% url 'projects:detail' project.id %}">{{ project.title }}</a>
-            {% if user.is_authenticated %}
+
+{% for project in all_projects %}
+<article class="media content-section">
+    <div class="row">
+        <div class="col-md-4">
+          <a href="{% url 'projects:detail' project.id %}">
+            <img class="img-fluid img-rounded img-thumbnail mb-3 mb-md-0 responsive"
+                 width="200" height="180" src="{{ project.photo.url }}" >
+          </a>
+        </div>
+        <div class="col-md-7">
+            <div class="article-metadata">
+              <small class="text-muted">{{ project.date }}</small>
+                {% if user.is_authenticated %}
             <form action="{% url 'projects:project-delete' project.id %}" method="post" style="display: inline;">
               {% csrf_token %}
               <input type="hidden" name="member_id" value="{{ project.id }}"/>
                    <button type="submit" class="btn btn-default btn-small">
-                       <span class="glyphicon glyphicon-trash"></span>
+                       <small><span class="glyphicon glyphicon-trash"></span></small>
                     </button>
             </form>
-            {% else %}
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+                {% else %}
+                {% endif %}
+            </div>
+          <a href="{% url 'projects:detail' project.id %}"><h3 class="article-title">{{ project.title }}</h3></a>
+          <p class="article-content">{{ project.description }}</p>
+          <a class="btn btn-primary" href="{% url 'projects:detail' project.id %}">Zobacz więcej!</a>
+        </div>
+      </div>
+</article>
+
+{% endfor %}
+
 {% else %}
     <h3>Nie ma projektów :(</h3>
 {% endif %}
