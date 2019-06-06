@@ -6,24 +6,32 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'members/style.css' %}">
 
-<h2>Członkowie:</h2>
 {% if all_members %}
-    <ul>
-        {% for member in all_members %}
-        <li><a href="{% url 'members:detail' member.id %}">{{ member.name }}</a>
+
+<div class="row">
+    {% for member in all_members %}
+    <div class="col-md-4">
+        <article class="media content-section">
+            <a href="{% url 'members:detail' member.id %}">
+            <img class="img-fluid img-rounded img-thumbnail mb-3 mb-md-0 index-img"
+                 width="200" height="180" src="{{ member.photo.url }}" >
+            </a>
+            <a href="{% url 'members:detail' member.id %}" style="text-align: center; display:block;">{{ member.name }}</a>
             {% if user.is_authenticated %}
             <form action="{% url 'members:member-delete' member.id %}" method="post" style="display: inline;">
               {% csrf_token %}
               <input type="hidden" name="member_id" value="{{ member.id }}"/>
                    <button type="submit" class="btn btn-default btn-small">
-                       <span class="glyphicon glyphicon-trash"></span>
+                       <small><span class="glyphicon glyphicon-trash"></span></small>
                     </button>
             </form>
             {% else %}
             {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+        </article>
+    </div>
+    {% endfor %}
+</div>
+
 {% else %}
     <h3>Nie ma członków :(</h3>
 {% endif %}

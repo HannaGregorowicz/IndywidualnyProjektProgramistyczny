@@ -11,8 +11,8 @@
     <div class="row">
         <div class="col-md-4">
           <a href="{% url 'projects:detail' project.id %}">
-            <img class="img-fluid img-rounded img-thumbnail mb-3 mb-md-0 responsive"
-                 width="200" height="180" src="{{ project.photo.url }}" >
+            <img class="img-fluid img-rounded img-thumbnail index-img"
+                 src="{{ project.photo.url }}" >
           </a>
         </div>
         <div class="col-md-7">
@@ -30,7 +30,7 @@
                 {% endif %}
             </div>
           <a href="{% url 'projects:detail' project.id %}"><h3 class="article-title">{{ project.title }}</h3></a>
-          <p class="article-content">{{ project.description }}</p>
+          <p class="article-content word-wrap">{{ project.description }}</p>
           <a class="btn btn-primary" href="{% url 'projects:detail' project.id %}">Zobacz więcej!</a>
         </div>
       </div>

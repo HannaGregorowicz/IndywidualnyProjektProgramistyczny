@@ -2,10 +2,36 @@
 {% load staticfiles %}
 {% block title %}Kontakt{% endblock %}
 {% block contact %}active{% endblock %}
+
 {% block body %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'members/style.css' %}">
+<div class="content-section">
+    <div class="row">
+        <div class="col-md-7">
+            <!--
+            <div id="map"></div>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DZydaMdFjK2j42e8Hwdi9VCJOttvTCE&callback=initMap"
+            async defer></script>
+            <script>
+              var map;
+              function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                  center: {lat: 51.1163217, lng: 17.0279650},
+                  zoom: 17
+                });
+              }
+            </script> -->
+            <img src="../media/mapa.jpg" class="contact img-rounded img-thumbnail">
 
-<h1>Kontakt</h1>
+
+        </div>
+        <div class="col-md-5">
+            <h2>Tu się spotykamy  <span class="glyphicon glyphicon-heart-empty"></span></h2><br>
+            <h4>Wydział Fizyki i Astronomii Uniwersytetu Wrocławskiego</h4>
+            <h4>pl. Maxa Borna 9, 50-204 Wrocław</h4>
+            <h4>koloissp@mail.com</h4>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

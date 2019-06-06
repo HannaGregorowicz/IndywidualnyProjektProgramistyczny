@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'geoposition',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,3 +133,5 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = '/about/'
+
+GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyD64AObNRMnU8mS9J03EKUa10TiY39Opck'
